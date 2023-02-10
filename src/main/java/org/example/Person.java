@@ -21,12 +21,12 @@ public class Person {
      * @param age the age of a person
      * @param gender the gender of the person
      */
-    public Person(String name, int age, String gender) throws NegativeValueException, IncorrectGenderException {
+    public Person(String name, int age, String gender) throws NegativeValueException, IncorrectGenderException, NullParameterException {
         if(name==null){
-            throw new NullPointerException("The name is null");
+            throw new NullParameterException("The name is null");
         }
         if(gender==null){
-            throw new NullPointerException("The gender is null");
+            throw new NullParameterException("The gender is null");
         }
         if(!gender.equals("Male") || !gender.equals("Female")){
             throw new IncorrectGenderException("The gender " + gender + " is incorrect");
@@ -78,12 +78,12 @@ public class Person {
         }
 
         if(countMale==0){
-            result[0]=0;
+            result[0]=-1;
         }else {
             result[0]= (sumAgeMale/countMale);
         }
         if (countFemale==0){
-            result[1]=0;
+            result[1]=-1;
         }else {
             result[1]=(sumAgeFemale/countFemale);
         }
