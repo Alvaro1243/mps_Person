@@ -12,7 +12,7 @@ public class Person {
 
     private final String name;
     private final int age;
-    private final String gender;
+    private final String gender; //Male, Female
 
     /**
      * Constructs a person with a name, age and gender.
@@ -21,14 +21,21 @@ public class Person {
      * @param age the age of a person
      * @param gender the gender of the person
      */
-    public Person(String name, int age, String gender) throws NegativeValueException {
+    public Person(String name, int age, String gender) throws NegativeValueException, IncorrectGenderException {
         if(name==null){
             throw new NullPointerException("The name is null");
         }
-        this.name=name;
+        if(gender==null){
+            throw new NullPointerException("The gender is null");
+        }
+        if(!gender.equals("Male") || !gender.equals("Female")){
+            throw new IncorrectGenderException("The gender " + gender + " is incorrect");
+        }
         if(age<0){
             throw new NegativeValueException("The age " + age + " is negative");
         }
+
+        this.name=name;
         this.age=age;
         this.gender = gender;
     }
@@ -50,10 +57,36 @@ public class Person {
      * (the first element is the male mean age and the second one is the female mean age)
      *
      * @param persons
-     * @return
+     * @return result
      */
 
     public double[] averageAgePerGender(List<Person> persons){
-        return null;
+        double [] result = new double[2];
+        int sumAgeMale = 0;
+        int sumAgeFemale = 0;
+        int countMale = 0;
+        int countFemale = 0;
+
+        for(Person p : persons){
+            if(p.gender.equals("Male")){
+                sumAgeMale+=p.age;
+                countMale++;
+            }else {
+                sumAgeFemale+=p.age;
+                countFemale++;
+            }
+        }
+
+        if(countMale==0){
+            result[0]=0;
+        }else {
+            result[0]= (sumAgeMale/countMale);
+        }
+        if (countFemale==0){
+            result[1]=0;
+        }else {
+            result[1]=(sumAgeFemale/countFemale);
+        }
+        return result;
     }
 }
