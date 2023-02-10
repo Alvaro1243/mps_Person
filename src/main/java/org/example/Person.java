@@ -92,12 +92,12 @@ public class Person {
         }
 
         if(countMale==0){
-            result[0]=0.0;
+            result[0]=0;
         }else {
             result[0]= (sumAgeMale/countMale);
         }
         if (countFemale==0){
-            result[1]=0.0;
+            result[1]=0;
         }else {
             result[1]=(sumAgeFemale/countFemale);
         }
