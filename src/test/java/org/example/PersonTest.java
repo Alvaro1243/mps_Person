@@ -18,10 +18,11 @@ import static org.junit.jupiter.api.Assertions.*;
  * 3 - gender can't be null
  * 4 - gender must be Male or Female
  * 5 - age must be positive
- * 6 - averageAgePerGender of a Empty list throws a EmptyValueException
- * 7 - averageAgePerGender of a list which contains Males but not Females
- * 8 - averageAgePerGender of a list which contains Females but not Males
- * 9 - averageAgePerGender of a list (not empty) returns the average age of male and female persons
+ * 6 - averageAgePerGender of a null
+ * 7 - averageAgePerGender of a Empty list throws a EmptyValueException
+ * 8 - averageAgePerGender of a list which contains Males but not Females
+ * 9 - averageAgePerGender of a list which contains Females but not Males
+ * 10 - averageAgePerGender of a list (not empty) returns the average age of male and female persons
  */
 class PersonTest {
 
@@ -50,6 +51,11 @@ class PersonTest {
         assertThrows(NegativeValueException.class, ()-> new Person("Pepe",-4,"Male"));
     }
 
+    @Test
+    void averageAgePerGenderOfNull(){
+        Person person = new Person("Pablo",20,"Male");
+        assertThrows(NullParameterException.class, () -> person.averageAgePerGender(null));
+    }
     @Test
     void averageAgePerGenderOfEmptyListIs(){
         Person person = new Person("Pablo",20,"Male");
