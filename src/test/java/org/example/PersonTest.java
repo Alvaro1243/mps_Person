@@ -70,6 +70,7 @@ class PersonTest {
         }
         double[] obtainedValue = person.averageAgePerGender(list);
         double[] expectedValue = {2,0};
+        assertArrayEquals(expectedValue,obtainedValue);
     }
 
     /**
