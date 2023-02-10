@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Exceptions;
 
 public class NullParameterException extends RuntimeException {
     public NullParameterException(String message) {

@@ -1,5 +1,10 @@
 package org.example;
 
+import org.example.Exceptions.EmptyValueException;
+import org.example.Exceptions.IncorrectGenderException;
+import org.example.Exceptions.NegativeValueException;
+import org.example.Exceptions.NullParameterException;
+
 import java.util.List;
 
 /**
@@ -24,6 +29,9 @@ public class Person {
     public Person(String name, int age, String gender) throws NegativeValueException, IncorrectGenderException, NullParameterException {
         if(name==null){
             throw new NullParameterException("The name is null");
+        }
+        if(name.equals("")){
+            throw new EmptyValueException("The name is empty");
         }
         if(gender==null){
             throw new NullParameterException("The gender is null");
@@ -61,6 +69,12 @@ public class Person {
      */
 
     public double[] averageAgePerGender(List<Person> persons){
+        if(persons==null){
+            throw new NullParameterException("The list is null");
+        }
+        if (persons.isEmpty()){
+            throw new EmptyValueException("The list " + persons + " is empty");
+        }
         double [] result = new double[2];
         int sumAgeMale = 0;
         int sumAgeFemale = 0;

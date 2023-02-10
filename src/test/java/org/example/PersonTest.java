@@ -1,5 +1,8 @@
 package org.example;
 
+import org.example.Exceptions.IncorrectGenderException;
+import org.example.Exceptions.NegativeValueException;
+import org.example.Exceptions.NullParameterException;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
