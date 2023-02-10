@@ -28,7 +28,7 @@ public class Person {
         if(gender==null){
             throw new NullParameterException("The gender is null");
         }
-        if(!gender.equals("Male") || !gender.equals("Female")){
+        if(!gender.equals("Male") && !gender.equals("Female")){
             throw new IncorrectGenderException("The gender " + gender + " is incorrect");
         }
         if(age<0){
@@ -78,12 +78,12 @@ public class Person {
         }
 
         if(countMale==0){
-            result[0]=-1;
+            result[0]=0.0;
         }else {
             result[0]= (sumAgeMale/countMale);
         }
         if (countFemale==0){
-            result[1]=-1;
+            result[1]=0.0;
         }else {
             result[1]=(sumAgeFemale/countFemale);
         }
