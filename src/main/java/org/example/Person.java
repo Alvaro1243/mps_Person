@@ -21,8 +21,14 @@ public class Person {
      * @param age the age of a person
      * @param gender the gender of the person
      */
-    public Person(String name, int age, String gender){
+    public Person(String name, int age, String gender) throws NegativeValueException {
+        if(name==null){
+            throw new NullPointerException("The name is null");
+        }
         this.name=name;
+        if(age<0){
+            throw new NegativeValueException("The age " + age + " is negative");
+        }
         this.age=age;
         this.gender = gender;
     }
